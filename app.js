@@ -1,5 +1,5 @@
 /* 
-   NEURAL_CORE // Core Application Logic
+   NEXORA // Core Application Logic
    Designed for the Year 2050 Cybernetic Interface
 */
 
