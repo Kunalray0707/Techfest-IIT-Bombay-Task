@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEURAL_CORE // Future Human-AI Interface</title>
+    <meta name="description" content="Fuse with the Core. Connect your consciousness to the next-generation biomechanical neural network. Cybernetic interfaces, quantum processing, and direct human-machine integration.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-theme-dark">
+
+    <!-- Custom Neon Cursor Trail -->
+    <div class="custom-cursor-glow" id="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+        <div class="cursor-label">SYS_TRACKING</div>
+    </div>
+
+    <!-- Scanline & Glitch Overlays -->
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+
+    <!-- Boot Loader Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader-content">
+            <div class="cyber-logo-text">NEURAL_CORE<span class="flicker">_</span></div>
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="loader-status" id="loader-status">INITIALIZING SYSTEM BOOT...</div>
+            <div class="loader-console" id="loader-console"></div>
+        </div>
+    </div>
+
+    <!-- Background Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="tech-icon">&lt;//&gt;</span>
+                <span class="logo-main">NEURAL_CORE</span>
+                <span class="logo-sub">// v3.42</span>
+            </a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link active" data-text="01. HOME">01. HOME</a>
+                <a href="#dashboard" class="nav-link" data-text="02. INTERFACE">02. INTERFACE</a>
+                <a href="#features" class="nav-link" data-text="03. FEATURES">03. FEATURES</a>
+                <a href="#technology" class="nav-link" data-text="04. TECH">04. TECH</a>
+                <a href="#stats" class="nav-link" data-text="05. TELEMETRY">05. TELEMETRY</a>
+                <a href="#showcase" class="nav-link" data-text="06. SHOWCASE">06. SHOWCASE</a>
+                <a href="#cta" class="nav-link nav-btn glow-btn-cyan" data-text="SYNC_NOW">SYNC_NOW</a>
+            </div>
+
+            <div class="nav-controls">
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Cyber Theme">
+                    <span class="toggle-icon">☼</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="section-hero" id="hero">
+        <!-- Interactive Moving Cyber Grid -->
+        <div class="cyber-grid" id="cyber-grid"></div>
+        
+        <div class="container hero-container">
+            <div class="hero-text-content">
+                <div class="cyber-badge neon-border-purple">
+                    <span class="badge-dot pulse-pink"></span>
+                    <span class="badge-txt">NEURAL_LINK: ACTIVE</span>
+                </div>
+                <h1 class="hero-title glitch-text" data-text="FUSE HUMANITY WITH ARTIFICIAL MIND">
+                    FUSE HUMANITY<br><span class="text-cyan">WITH ARTIFICIAL</span><br><span class="text-pink text-pulse">INTELLIGENCE</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Connect your synapses directly to the neural lattice. Establish complete biological-to-digital data stream at 1.2 Petabytes per second. Overcome human limitations.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn glow-btn-cyan magnetic-btn" id="initiate-sync">
+                        <span>INITIATE INTERFACE</span>
+                    </button>
+                    <button class="btn border-btn-pink magnetic-btn" onclick="document.getElementById('dashboard').scrollIntoView({behavior: 'smooth'})">
+                        <span>VIEW SYSTEM LOGS</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual-content">
+                <!-- 3D Hologram Area -->
+                <div class="hologram-viewport">
+                    <div class="hologram-glow"></div>
+                    <canvas id="canvas-3d"></canvas>
+                    
+                    <!-- Floating Holographic HUD Cards -->
+                    <div class="hud-card top-left floating-card" style="--float-delay: 0s;">
+                        <div class="hud-card-header">
+                            <span class="hud-title">SYNAPSE FLOW</span>
+                            <span class="hud-status text-cyan">98.4%</span>
+                        </div>
+                        <div class="hud-chart-bar"><div style="width: 98.4%"></div></div>
+                        <span class="hud-desc">Direct cortical mapping established.</span>
+                    </div>
+
+                    <div class="hud-card bottom-right floating-card" style="--float-delay: 2s;">
+                        <div class="hud-card-header">
+                            <span class="hud-title">MEM_ALLOC</span>
+                            <span class="hud-status text-pink">8.42 TB/s</span>
+                        </div>
+                        <div class="hud-grid-dots">
+                            <span></span><span></span><span></span><span class="active"></span><span></span>
+                            <span class="active"></span><span></span><span></span><span></span><span class="active"></span>
+                        </div>
+                        <span class="hud-desc">Direct interface sync processing...</span>
+                    </div>
+
+                    <!-- HUD Circular Grid Frame -->
+                    <div class="hud-circle-scanner">
+                        <svg class="scanner-svg" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="outer-dashed"></circle>
+                            <circle cx="50" cy="50" r="38" class="inner-solid"></circle>
+                            <circle cx="50" cy="50" r="28" class="inner-dashed"></circle>
+                            <line x1="50" y1="5" x2="50" y2="95" class="scanner-axis"></line>
+                            <line x1="5" y1="50" x2="95" y2="50" class="scanner-axis"></line>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('dashboard').scrollIntoView({behavior: 'smooth'})">
+            <span class="scroll-mouse"><span class="wheel"></span></span>
+            <span class="scroll-label">SCROLL TELEMETRY</span>
+        </div>
+    </header>
+
+    <!-- 2. Interactive Cyber Interface Section -->
+    <section class="section-dashboard" id="dashboard">
+        <div class="container">
+            <div class="section-header align-center">
+                <span class="section-pre">CONSOLE // TERMINAL</span>
+                <h2 class="section-title">CORE COGNITIVE INTERFACE</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Panel 1: Live Logs -->
+                <div class="dash-panel glass-card neon-border-blue text-mono" data-tilt>
+                    <div class="panel-header">
+                        <span class="panel-tag">&gt;_ SYSTEM_LOGS</span>
+                        <div class="panel-window-controls">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="panel-body console-body" id="console-logs">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- Panel 2: Holographic Interface Controller -->
+                <div class="dash-panel glass-card neon-border-purple" data-tilt>
+                    <div class="panel-header">
+                        <span class="panel-tag">[ DIRECT_COGNITION_LINK ]</span>
+                        <span class="status-indicator text-cyan animate-pulse">● LIVE</span>
+                    </div>
+                    <div class="panel-body dash-controls-layout">
+                        <div class="neuro-mapping-graphic">
+                            <!-- Visual Graphic Container -->
+                            <div class="network-circle">
+                                <div class="pulse-ring"></div>
+                                <div class="pulse-ring2"></div>
+                                <svg class="hud-diagram" viewBox="0 0 100 100">
+                                    <polygon points="50,15 80,35 80,65 50,85 20,65 20,35" class="poly-wire"></polygon>
+                                    <line x1="50" y1="15" x2="50" y2="85" class="line-wire"></line>
+                                    <line x1="80" y1="35" x2="20" y2="65" class="line-wire"></line>
+                                    <line x1="80" y1="65" x2="20" y2="35" class="line-wire"></line>
+                                    <circle cx="50" cy="50" r="10" class="core-node"></circle>
+                                    <circle cx="50" cy="15" r="3" class="outer-node node-1"></circle>
+                                    <circle cx="80" cy="35" r="3" class="outer-node node-2"></circle>
+                                    <circle cx="80" cy="65" r="3" class="outer-node node-3"></circle>
+                                    <circle cx="50" cy="85" r="3" class="outer-node node-4"></circle>
+                                    <circle cx="20" cy="65" r="3" class="outer-node node-5"></circle>
+                                    <circle cx="20" cy="35" r="3" class="outer-node node-6"></circle>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="neuro-switches">
+                            <div class="neuro-switch-item">
+                                <span class="switch-label">SYNAPSE AMPLIFIER</span>
+                                <label class="cyber-switch">
+                                    <input type="checkbox" id="toggle-synapse" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                            <div class="neuro-switch-item">
+                                <span class="switch-label">OVERLOAD PROTECTION</span>
+                                <label class="cyber-switch">
+                                    <input type="checkbox" id="toggle-protection">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                            <div class="neuro-switch-item">
+                                <span class="switch-label">QUANTUM BACKCHANNEL</span>
+                                <label class="cyber-switch">
+                                    <input type="checkbox" id="toggle-backchannel" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                            <div class="neuro-switch-item">
+                                <span class="switch-label">Direct Cortical Mapping</span>
+                                <span class="badge-txt-only text-cyan" id="mapping-status">STABLE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Brainwave Frequency Matrix -->
+                <div class="dash-panel glass-card neon-border-pink" data-tilt>
+                    <div class="panel-header">
+                        <span class="panel-tag">// FREQUENCY_ANALYZER</span>
+                    </div>
+                    <div class="panel-body flex-col justify-between">
+                        <div class="freq-wave-container" id="freq-wave-bars">
+                            <!-- JS will inject dynamic bars for visual effect -->
+                        </div>
+                        <div class="freq-footer text-mono">
+                            <div class="freq-meta">
+                                <span>ALPHA: <span class="text-pink" id="freq-alpha">12.4 Hz</span></span>
+                                <span>BETA: <span class="text-cyan" id="freq-beta">21.8 Hz</span></span>
+                            </div>
+                            <div class="freq-load-bar-wrapper">
+                                <span>COGNITIVE_LOAD:</span>
+                                <div class="progress-track">
+                                    <div class="progress-fill neon-bg-pink" id="cognitive-load-fill" style="width: 45%;"></div>
+                                </div>
+                                <span class="text-pink font-bold" id="cognitive-load-txt">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Features Section -->
+    <section class="section-features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-pre">ENHANCEMENTS // MODULES</span>
+                <h2 class="section-title">CYBERNETIC ENHANCEMENT ARCHITECTURE</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature Card 1 -->
+                <div class="feature-card glass-card neon-border-blue hover-tilt" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="feature-icon text-cyan">
+                        <!-- Biometrics SVG -->
+                        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="1.5" fill="none">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Direct Synaptic Bridge</h3>
+                    <p class="feature-desc">Translate binary arrays directly into cognitive memory traces. Eliminate text screens and sensory delay with raw data stream projection.</p>
+                    <div class="feature-tech-tag text-mono">MODULE_ID: SYNAPSE_V4</div>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="feature-card glass-card neon-border-purple hover-tilt" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="feature-icon text-purple">
+                        <!-- Brain SVG -->
+                        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="1.5" fill="none">
+                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z"></path>
+                            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Quantum Memory Matrix</h3>
+                    <p class="feature-desc">Utilize sub-atomic spin qubits inside sub-dermal cyber implants to store up to 500 Yottabytes of local hyper-encrypted secure data.</p>
+                    <div class="feature-tech-tag text-mono">MODULE_ID: Q_MEM_M4</div>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="feature-card glass-card neon-border-pink hover-tilt" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="feature-icon text-pink">
+                        <!-- Activity/Shield SVG -->
+                        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="1.5" fill="none">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Biomechanical Defense</h3>
+                    <p class="feature-desc">AI-driven active firewalls monitor blood chemistry and neural pulses to protect against malicious cognitive injections and cyberware exploits.</p>
+                    <div class="feature-tech-tag text-mono">MODULE_ID: BIO_SHIELD_v9</div>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="feature-card glass-card neon-border-blue hover-tilt" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="feature-icon text-cyan">
+                        <!-- Cpu SVG -->
+                        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="1.5" fill="none">
+                            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="15" x2="23" y2="15"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="15" x2="4" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Exo-Processor Grid</h3>
+                    <p class="feature-desc">Offload cognitive calculation tasks to the planetary cloud nodes. Multiply logic capabilities, language translation, and equation analysis.</p>
+                    <div class="feature-tech-tag text-mono">MODULE_ID: EXO_GRID_8</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Technology Showcase Section -->
+    <section class="section-technology" id="technology">
+        <div class="container flex-row-reverse-responsive">
+            <div class="tech-text-content">
+                <div class="section-header">
+                    <span class="section-pre">NETWORK // LATTICE</span>
+                    <h2 class="section-title">THE NEURAL GRID</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <p class="section-desc">
+                    Our biomechanical networks fuse living tissues with carbon nanotubes. We map, compile, and stream consciousness through glowing optical fibers directly interfacing with global quantum nodes.
+                </p>
+
+                <!-- Animated Progress Telemetry -->
+                <div class="tech-metrics-list text-mono">
+                    <div class="metric-item">
+                        <div class="metric-info">
+                            <span>SYNAPSE COMPATIBILITY</span>
+                            <span class="text-cyan">99.8%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill progress-glow-cyan" style="width: 99.8%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-item">
+                        <div class="metric-info">
+                            <span>DATA PACKET LOSS RATE</span>
+                            <span class="text-pink">0.0002%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill progress-glow-pink" style="width: 1.5%"></div>
+                        </div>
+                    </div>
+
+                    <div class="metric-item">
+                        <div class="metric-info">
+                            <span>NEURAL RECONSTRUCTION</span>
+                            <span class="text-purple">92.4%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill progress-glow-purple" style="width: 92.4%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Tech Badges -->
+                <div class="tech-badges-grid">
+                    <span class="tech-badge">BIO_FUSION_V3</span>
+                    <span class="tech-badge">NEURAL_DECK_PRO</span>
+                    <span class="tech-badge">QUANTUM_SEC_6</span>
+                    <span class="tech-badge">COGNITIVE_GRID</span>
+                </div>
+            </div>
+
+            <!-- Digital Circuit Visualization Canvas -->
+            <div class="tech-visual-content">
+                <div class="circuit-wrapper">
+                    <div class="circuit-overlay"></div>
+                    <canvas id="circuit-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Statistics Section (Dashboard Telemetry) -->
+    <section class="section-stats" id="stats">
+        <div class="container">
+            <div class="stats-dashboard glass-card neon-border-blue">
+                <div class="stats-decor-lines"></div>
+                <div class="stats-grid">
+                    <!-- Stat Item 1 -->
+                    <div class="stat-card">
+                        <div class="stat-circle-progress" style="--percent: 94;">
+                            <svg viewBox="0 0 36 36" class="circular-chart cyan">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle-fill" stroke-dasharray="94, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="stat-value text-cyan" id="stat-nodes" data-target="1042">0</div>
+                        </div>
+                        <div class="stat-title text-mono">CONNECTED_NODES</div>
+                    </div>
+
+                    <!-- Stat Item 2 -->
+                    <div class="stat-card">
+                        <div class="stat-circle-progress" style="--percent: 85;">
+                            <svg viewBox="0 0 36 36" class="circular-chart purple">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle-fill" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="stat-value text-purple" id="stat-speed" data-target="982">0</div>
+                        </div>
+                        <div class="stat-title text-mono">SYNC_SPEED_PB/S</div>
+                    </div>
+
+                    <!-- Stat Item 3 -->
+                    <div class="stat-card">
+                        <div class="stat-circle-progress" style="--percent: 99;">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle-fill" stroke-dasharray="99, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="stat-value text-pink" id="stat-precision" data-target="99.9">0</div>
+                        </div>
+                        <div class="stat-title text-mono">INTEGRATION_PRECISION_%</div>
+                    </div>
+
+                    <!-- Stat Item 4 -->
+                    <div class="stat-card">
+                        <div class="stat-circle-progress" style="--percent: 74;">
+                            <svg viewBox="0 0 36 36" class="circular-chart cyan">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle-fill" stroke-dasharray="74, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="stat-value text-cyan" id="stat-cores" data-target="48">0</div>
+                        </div>
+                        <div class="stat-title text-mono">COGNITIVE_CORES_ACTIVE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Showcase Section -->
+    <section class="section-showcase" id="showcase">
+        <div class="container">
+            <div class="section-header align-center">
+                <span class="section-pre">SHOWCASE // PROTOTYPES</span>
+                <h2 class="section-title">CYBERNETIC SYNERGY PROJECT SHOWCASE</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Product Showcase Grid -->
+            <div class="showcase-grid">
+                <!-- Project 1 -->
+                <div class="showcase-card glass-card hover-tilt" data-tilt>
+                    <div class="showcase-img-container">
+                        <div class="showcase-img-glitch"></div>
+                        <img src="images/cyber_avatar.png" alt="Neural Interface Model" class="showcase-img">
+                        <div class="img-hud-scanline"></div>
+                    </div>
+                    <div class="showcase-info">
+                        <div class="showcase-cat text-mono text-cyan">PROJECT_01 // BIO-SYNC</div>
+                        <h3 class="showcase-card-title">Cortical Mesh v9</h3>
+                        <p class="showcase-desc">Direct interface implant integrated into the nervous system. Achieved 99.8% biological synergy without cellular rejection.</p>
+                        <a href="#cta" class="showcase-link text-mono text-cyan">INSPECT_SPECIFICATIONS &gt;</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="showcase-card glass-card hover-tilt" data-tilt>
+                    <div class="showcase-img-container">
+                        <div class="showcase-img-glitch"></div>
+                        <img src="images/cyber_interface.png" alt="Direct AI Synapse Matrix" class="showcase-img">
+                        <div class="img-hud-scanline"></div>
+                    </div>
+                    <div class="showcase-info">
+                        <div class="showcase-cat text-mono text-purple">PROJECT_02 // DECK</div>
+                        <h3 class="showcase-card-title">Neural Deck XR</h3>
+                        <p class="showcase-desc">High-power processing module that overrides local hardware. Offloads data compilation directly to carbon quantum arrays.</p>
+                        <a href="#cta" class="showcase-link text-mono text-purple">INSPECT_SPECIFICATIONS &gt;</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="showcase-card glass-card hover-tilt" data-tilt>
+                    <div class="showcase-img-container">
+                        <div class="showcase-img-glitch"></div>
+                        <img src="images/cyber_device.png" alt="Exo-Brain Quantum Array" class="showcase-img">
+                        <div class="img-hud-scanline"></div>
+                    </div>
+                    <div class="showcase-info">
+                        <div class="showcase-cat text-mono text-pink">PROJECT_03 // LATTICE</div>
+                        <h3 class="showcase-card-title">Synapse Bridge Array</h3>
+                        <p class="showcase-desc">Local neural lattice linking up to 6 cyborg brains. Implemented absolute biological thought synchronization between subjects.</p>
+                        <a href="#cta" class="showcase-link text-mono text-pink">INSPECT_SPECIFICATIONS &gt;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Testimonials Section -->
+    <section class="section-testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header align-center">
+                <span class="section-pre">FEEDBACK // EXPERIENCES</span>
+                <h2 class="section-title">NEURAL CONNECT SYNERGISTS</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Testimonial Slider Frame -->
+            <div class="carousel-container">
+                <div class="carousel-track" id="testimonial-carousel">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-card glass-card neon-border-blue">
+                            <p class="testimonial-quote">
+                                "The Direct Synaptic Bridge changed everything. My code compiles straight from thought to compiler. I no longer feel the keyboard barrier. I am one with the machine."
+                            </p>
+                            <div class="testimonial-user">
+                                <div class="user-avatar-wrapper">
+                                    <div class="avatar-glitch"></div>
+                                    <img src="images/avatar_1.png" alt="Sync Agent 0x92" class="user-avatar">
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name">V0x_Aelita</span>
+                                    <span class="user-title text-mono text-cyan">Senior Cybernetic Architect</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card glass-card neon-border-purple">
+                            <p class="testimonial-quote">
+                                "Storing our mainframe arrays on the Quantum Memory Matrix saved our enterprise from 14 cognitive injection sweeps. Highly encrypted, stable, and incredibly fast."
+                            </p>
+                            <div class="testimonial-user">
+                                <div class="user-avatar-wrapper">
+                                    <div class="avatar-glitch"></div>
+                                    <img src="images/avatar_2.png" alt="Sync Agent 0x48" class="user-avatar">
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name">K40S_Coder</span>
+                                    <span class="user-title text-mono text-purple">Quantum Ops Security Lead</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card glass-card neon-border-pink">
+                            <p class="testimonial-quote">
+                                "Exo-Processor Grid enabled me to analyze galaxy-scale quantum maps within minutes. Direct brain interface loading speeds surpass physical monitor outputs. Truly outstanding."
+                            </p>
+                            <div class="testimonial-user">
+                                <div class="user-avatar-wrapper">
+                                    <div class="avatar-glitch"></div>
+                                    <img src="images/avatar_3.png" alt="Sync Agent 0x76" class="user-avatar">
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name">N30N_Rider</span>
+                                    <span class="user-title text-mono text-pink">Data Visualization Pioneer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators" id="carousel-indicators">
+                    <span class="indicator-dot active" data-slide="0"></span>
+                    <span class="indicator-dot" data-slide="1"></span>
+                    <span class="indicator-dot" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA Section -->
+    <section class="section-cta" id="cta">
+        <div class="cta-scan-glow"></div>
+        <div class="container cta-container glass-card neon-border-pink">
+            <div class="cta-content">
+                <span class="cta-pre text-mono text-pink">SECURE_INTERFACE_STREAM // OPEN</span>
+                <h2 class="cta-title glitch-text" data-text="ESTABLISH CONSCIOUSNESS LINK NOW">ESTABLISH CONSCIOUSNESS<br>LINK NOW</h2>
+                <p class="cta-desc text-mono">
+                    Ready to transcend biological boundaries? Connect your cortex, load drivers, and stream directly through the Neural Core network.
+                </p>
+                <div class="cta-actions">
+                    <button class="btn glow-btn-pink magnetic-btn" id="cta-sync-btn">
+                        <span>SYNC CONSCIOUSNESS</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="cta-graphic">
+                <div class="terminal-box text-mono">
+                    <div class="terminal-bar">
+                        <span>PORT_662: LISTEN</span>
+                        <div class="term-dots"><span></span><span></span></div>
+                    </div>
+                    <div class="terminal-content" id="cta-term-content">
+                        <div>$ neural_core --connect</div>
+                        <div>[SYSTEM] Registering synaptic sync...</div>
+                        <div>[SYSTEM] Sync status: PENDING_USER_INPUT</div>
+                        <div class="cursor-type font-bold text-pink">_</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Footer Section -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-info-col">
+                <a href="#hero" class="nav-logo">
+                    <span class="logo-main text-cyan">NEURAL_CORE</span>
+                </a>
+                <p class="footer-desc">
+                    Designing the future of cognitive human-AI symbiosis since 2042. Cybernetic hardware grids, direct brain interfaces, and synaptic computing.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon hover-glitch" aria-label="Github">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="#" class="social-icon hover-glitch" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                    <a href="#" class="social-icon hover-glitch" aria-label="Terminal">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-col">
+                <h4 class="footer-title text-mono text-purple">NAVIGATION</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero">01. HOME_STREAM</a></li>
+                    <li><a href="#dashboard">02. CYBER_PORTAL</a></li>
+                    <li><a href="#features">03. COGNITIVE_UPGRADES</a></li>
+                    <li><a href="#technology">04. NEURAL_GRID</a></li>
+                    <li><a href="#stats">05. SYSTEM_TELEMETRY</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-col">
+                <h4 class="footer-title text-mono text-pink">RESOURCES</h4>
+                <ul class="footer-links">
+                    <li><a href="#">API_DRIVERS_v3.4</a></li>
+                    <li><a href="#">HARDWARE_DECK_DOCS</a></li>
+                    <li><a href="#">COGNITIVE_LAWS_2050</a></li>
+                    <li><a href="#">SECURITY_INTEGRITY_LOG</a></li>
+                    <li><a href="#">SYNERGY_MEMORANDUM</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter-col">
+                <h4 class="footer-title text-mono text-cyan">INJECT_TELEMETRY (NEWSLETTER)</h4>
+                <p class="newsletter-desc">Subscribe to receive biological drivers updates, hardware patches, and system status logs.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="SUBJECT_EMAIL@STREAM.IO" class="newsletter-input" required id="newsletter-email">
+                    <button type="submit" class="newsletter-submit-btn" aria-label="Subscribe">
+                        <span>&gt;</span>
+                    </button>
+                </form>
+                <div class="newsletter-status text-mono text-cyan" id="newsletter-msg"></div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom text-mono">
+            <div class="container footer-bottom-container">
+                <span>SYSTEM_HASH: 0x98FF2CDE4501B8A4</span>
+                <span>NEURAL SYNERGIES CORPORATION © 2050 // ALL BEINGS LINKED.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js (Hologram Rendering) and GSAP (Animations) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Core Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
